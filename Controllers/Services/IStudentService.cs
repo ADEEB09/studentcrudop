@@ -7,5 +7,7 @@ namespace WebApplication2.Services
     {
         List<Student> GetStudents();
         Student GetStudentById(int id);
+
+        void AddStudent(Student student);
     }
 }

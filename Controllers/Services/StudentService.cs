@@ -6,21 +6,36 @@ namespace WebApplication2.Services
 {
     public class StudentService : IStudentService
     {
-        private static readonly List<Student> _students = new()
+        //private static readonly List<Student> _students = new()
+        //{
+        //    new Student { StudentId = 1, Name = "John", Age = 20, Grade = "A" },
+        //    new Student { StudentId = 2, Name = "Alice", Age = 21, Grade = "B" },
+        //    new Student { StudentId = 3, Name = "Karan", Age = 22, Grade = "A+" }
+        //};
+
+        private readonly StudentDbContext _studentDbContext;
+
+        public StudentService(StudentDbContext studentDbContext)
         {
-            new Student { StudentId = 1, Name = "John", Age = 20, Grade = "A" },
-            new Student { StudentId = 2, Name = "Alice", Age = 21, Grade = "B" },
-            new Student { StudentId = 3, Name = "Karan", Age = 22, Grade = "A+" }
-        };
+            _studentDbContext = studentDbContext;
+        }
 
         public List<Student> GetStudents()
         {
-            return _students;
+            // Correct way to fetch all records from the Students table
+            return _studentDbContext.Students.ToList();
         }
 
         public Student GetStudentById(int id)
         {
-            return _students.FirstOrDefault(s => s.StudentId == id);
+            // Fetch student by ID directly from the database
+            return _studentDbContext.Students.FirstOrDefault(s => s.StudentId == id);
+        }
+
+        public void AddStudent(Student student)
+        {
+            _studentDbContext.Students.Add(student);
+            _studentDbContext.SaveChanges();
         }
     }
 }

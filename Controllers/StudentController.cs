@@ -30,5 +30,13 @@ namespace WebApplication2.Controllers
                 return NotFound();
             return Ok(student);
         }
+
+        [HttpPost]
+        public ActionResult<Student> AddStudent(Student student)
+        {
+            _studentService.AddStudent(student);
+            return Ok(student);
+        }
+
     }
 }
