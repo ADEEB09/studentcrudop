@@ -334,7 +334,9 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
-
+git add .
+git commit -m "Added .gitignore and initial project files"
+git push
 # Azure Stream Analytics local run output
 ASALocalRun/
 
@@ -361,3 +363,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+bin/
+obj/
+.vscode/
+*.user
+*.suo
+*.log
+*.db
+appsettings.Development.json
+
+nano .gitignore
+
+bin/
+obj/
+.vscode/
+*.user
+*.suo
+*.log
+*.db
+appsettings.Development.json
+
+

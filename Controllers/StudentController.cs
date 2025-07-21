@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
 using WebApplication2.Services;
 
@@ -6,6 +7,8 @@ namespace WebApplication2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Route("[controller]")]
+    [Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
