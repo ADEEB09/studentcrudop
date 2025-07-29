@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace WebApplication2.Models
+﻿namespace studentcrudop.Model
 {
     public class Student
     {
-        public int StudentId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public string Grade { get; set; }
+        public string Email { get; set; }
     }
 }
-

@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using studentcrudop.repository;
+using studentcrudop.Services;
 using System.Text;
-using WebApplication2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
-// 🔐 JWT Authentication setup
+
+// JWT Authentication setup
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -25,40 +28,41 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "YourApp", // Match with token issuer
-        ValidAudience = "YourAppUsers", // Match with token audience
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Your_Secret_Key")) // Replace with secure key
+        ValidIssuer = "YourApp",
+        ValidAudience = "YourAppUsers",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Your_Secret_Key_123"))
     };
 });
 
-// 👨‍🎓 Register your custom service
+// Dependency Injection
 builder.Services.AddScoped<IStudentService, StudentService>();
 
-// 💾 Register your DbContext
+// EF Core SQL Server setup
 builder.Services.AddDbContext<StudentDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
+        sqlOptions => sqlOptions.EnableRetryOnFailure()
     )
 );
 
 var app = builder.Build();
 
-// 🔧 Middleware configuration
+// Middleware
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // Must come before UseAuthorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// ✅ Optional: Test DB connection on startup
+// Validate DB connection at startup
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<StudentDbContext>();
@@ -66,10 +70,11 @@ using (var scope = app.Services.CreateScope())
     {
         db.Database.OpenConnection();
         db.Database.CloseConnection();
+        Console.WriteLine("✅ Database connection successful.");
     }
     catch (Exception ex)
     {
-        Console.WriteLine("❌ Failed to connect to the database at startup: " + ex.Message);
+        Console.WriteLine("❌ Failed to connect to the database: " + ex.Message);
         Environment.Exit(1);
     }
 }

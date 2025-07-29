@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>
@@ -16,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\Adeeb Javed\source\repos\WebApplication2\.editorconfig" />
+    <EditorConfigFiles Remove="C:\Users\Adeeb Javed\source\repos\studentcrudop\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\Adeeb Javed\source\repos\WebApplication2\.editorconfig" />
+    <None Include="C:\Users\Adeeb Javed\source\repos\studentcrudop\.editorconfig" />
   </ItemGroup>
 
 </Project>

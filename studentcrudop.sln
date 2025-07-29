@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2.csproj", "{114F2545-C33D-4806-B92B-D81DD1A3FF5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studentcrudop", "studentcrudop.csproj", "{E7A6E43B-6FF2-753B-4A05-D24941E57CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{114F2545-C33D-4806-B92B-D81DD1A3FF5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{114F2545-C33D-4806-B92B-D81DD1A3FF5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{114F2545-C33D-4806-B92B-D81DD1A3FF5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{114F2545-C33D-4806-B92B-D81DD1A3FF5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A6E43B-6FF2-753B-4A05-D24941E57CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A6E43B-6FF2-753B-4A05-D24941E57CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A6E43B-6FF2-753B-4A05-D24941E57CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A6E43B-6FF2-753B-4A05-D24941E57CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
